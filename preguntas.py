@@ -138,3 +138,4 @@ def pregunta_03():
     )
 
     return df
+
