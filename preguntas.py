@@ -12,24 +12,18 @@ from sklearn import datasets
 def pregunta_01():
     """
     Complete el código presentado a continuación.
+    
     """
 
     # Cargue el dataset digits
-    digits = datasets.load_digits(
-    # -------------------------------------------------------------------------
-    # The number of classes to return. Between 0 and 10.
-    n_class = 10,
-    # -------------------------------------------------------------------------
-    # If True, returns (data, target) instead of a Bunch
-    # object.
-    return_X_y = False)
+    digits = datasets.load_digits()
 
     # Imprima los nombres de la variable target del dataset
     print(digits.target_names)
 
     # Imprima las dimensinoes de matriz de datos
     print(digits.data.shape)
-
+    
     # Imprima las dimensiones del vector de salida
     print(digits.target.shape)
 
@@ -45,25 +39,17 @@ def pregunta_02():
     from sklearn.model_selection import train_test_split
 
     # Cargue el dataset digits
-    digits = datasets.load_digits(
-    # -------------------------------------------------------------------------
-    # The number of classes to return. Between 0 and 10.
-    n_class = 10,
-    # -------------------------------------------------------------------------
-    # If True, returns (data, target) instead of a Bunch
-    # object.
-    return_X_y = False)
+    digits = datasets.load_digits()
 
     # Cree los vectors de características y de salida
-    n_samples = len(digits.images)
-    X = digits.data.reshape((n_samples, -1))
+    X = digits.data
     y = digits.target
 
     # Divida los datos de entrenamiento y prueba. Los conjuntos de datos están
     # estratificados. La semilla del generador de números aleatorios es 42.
     # El tamaño del test es del 20%
     X_train, X_test, y_train, y_test = train_test_split(
-        X, y, test_size = 0.2, random_state = 42, stratify = y
+        X, y, test_size=0.2, random_state=42, stratify=y
     )
 
     # Cree un clasificador con siete vecinos
@@ -78,6 +64,7 @@ def pregunta_02():
 
 def pregunta_03():
     """
+    
     Complete el código presentado a continuación.
     """
 
@@ -88,24 +75,16 @@ def pregunta_03():
     from sklearn.model_selection import train_test_split
 
     # Cargue el dataset digits
-    digits = datasets.load_digits(
-    # -------------------------------------------------------------------------
-    # The number of classes to return. Between 0 and 10.
-    n_class = 10,
-    # -------------------------------------------------------------------------
-    # If True, returns (data, target) instead of a Bunch
-    # object.
-    return_X_y = False)
+    digits = datasets.load_digits()
 
     # Cree los vectors de características y de salida
-    n_samples = len(digits.images)
-    X = digits.data.reshape((n_samples, -1))
+    X = digits.data
     y = digits.target
 
     # Divida los datos de entrenamiento y prueba. Los conjuntos de datos están
     # estratificados. La semilla del generador de números aleatorios es 42.
     X_train, X_test, y_train, y_test = train_test_split(
-        X, y, test_size = 0.2, random_state = 42, stratify = y
+        X, y, test_size=0.2, random_state=42, stratify=y
     )
 
     # Inicialice los arreglos para almacenar la precisión para las muestras de
@@ -117,7 +96,7 @@ def pregunta_03():
     # Se itera sobre diferentes valores de vecinos
     for i, k in enumerate(neighbors):
         # Cree un clasificador con k vecinos
-        knn = knn = KNeighborsClassifier(n_neighbors = k)
+        knn = KNeighborsClassifier(n_neighbors = k)
 
         # Entrene el clasificador con los datos de entrenamiento
         knn.fit(X_train, y_train)
@@ -138,4 +117,3 @@ def pregunta_03():
     )
 
     return df
-
